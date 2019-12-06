@@ -17,6 +17,10 @@ import com.susiha.Utils.BaseUtils;
  *
  * 这里的运算使用的是第一种存储方法是
  *
+ * 多项式也可以使用链表表示 每一个Node 有两个数字 第一个数字是多项式的系数，第是多项式的幂 这样就比较节省空间和计算方便
+ * 比如说f(x) = 5x^6+4x^3-2x+1
+ * 可以用链表表示为 -->|5|6|-->|4|3|-->|-2|1|-->|1|0|
+ *
  */
 public class Polynomial {
     public static  final String POWER="x^";

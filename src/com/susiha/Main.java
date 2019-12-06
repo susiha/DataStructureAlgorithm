@@ -1,9 +1,16 @@
 package com.susiha;
 
 import com.susiha.Utils.BaseUtils;
+import com.susiha.algorithm.Hanoi;
+import com.susiha.algorithm.Maze;
 import com.susiha.concept.Matrix;
 import com.susiha.concept.Polynomial;
-import com.susiha.datastructure.Array;
+import com.susiha.datastructure.base.Array;
+import com.susiha.datastructure.stack.StackByArray;
+import com.susiha.datastructure.stack.StackByLinked;
+
+import java.util.Random;
+
 public class Main {
     public static void main(String args[]){
 //        testArray();
@@ -13,7 +20,11 @@ public class Main {
 //        testTranspositionMatrix();
 //        testSparseMatrix();
 //        testPrintlnPolynomial();
-        testAddPolynomail();
+//        testAddPolynomail();
+//        testStackByArray();
+//        testStackByLinked();
+//        testHanoi();
+        testMaze();
     }
 
     private static void testArray(){
@@ -107,14 +118,54 @@ public class Main {
         Polynomial.printPolynomial(arrB);
         BaseUtils.println("Result -----");
         Polynomial.printPolynomial(Polynomial.addPolynomoal(arrA,arrB));
-
     }
 
 
+    private static void testStackByArray(){
 
+        StackByArray stackByArray = new StackByArray();
 
+        for(int i =0;i<10;i++){
+            stackByArray.push(i);
+        }
 
+        BaseUtils.println(stackByArray.toString());
+        BaseUtils.println(stackByArray.peek()+"");
+        stackByArray.pop();
+        BaseUtils.println(stackByArray.peek()+"");
+        stackByArray.pop();
+        BaseUtils.println(stackByArray.peek()+"");
+        stackByArray.pop();
+        BaseUtils.println(stackByArray.peek()+"");
+        BaseUtils.println(stackByArray.toString());
+    }
 
+    private static void testStackByLinked(){
 
+        StackByLinked stackByArray = new StackByLinked();
 
+        for(int i =0;i<10;i++){
+            stackByArray.push(i);
+        }
+
+        BaseUtils.println(stackByArray.toString());
+        BaseUtils.println(stackByArray.peek()+"");
+        stackByArray.pop();
+        BaseUtils.println(stackByArray.peek()+"");
+        stackByArray.pop();
+        BaseUtils.println(stackByArray.peek()+"");
+        stackByArray.pop();
+        BaseUtils.println(stackByArray.peek()+"");
+        BaseUtils.println(stackByArray.toString());
+    }
+
+    private static void testHanoi(){
+        Hanoi hanoi = new Hanoi();
+        hanoi.hanoi(2);
+    }
+
+    private static void testMaze(){
+        Maze maze = new Maze();
+        maze.maze();
+    }
 }

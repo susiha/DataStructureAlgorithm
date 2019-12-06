@@ -1,4 +1,4 @@
-package com.susiha.datastructure;
+package com.susiha.datastructure.base;
 
 /**
  * 自定义线性表
