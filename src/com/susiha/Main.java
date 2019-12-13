@@ -1,30 +1,22 @@
 package com.susiha;
 
 import com.susiha.Utils.BaseUtils;
+import com.susiha.algorithm.EightQueen;
 import com.susiha.algorithm.Hanoi;
 import com.susiha.algorithm.Maze;
+import com.susiha.concept.Expression;
 import com.susiha.concept.Matrix;
 import com.susiha.concept.Polynomial;
 import com.susiha.datastructure.base.Array;
 import com.susiha.datastructure.stack.StackByArray;
 import com.susiha.datastructure.stack.StackByLinked;
 
-import java.util.Random;
-
 public class Main {
     public static void main(String args[]){
-//        testArray();
-//        testShowMatrix();
-//          testAddMatrix();
-//        testMutilMatrix();
-//        testTranspositionMatrix();
-//        testSparseMatrix();
-//        testPrintlnPolynomial();
-//        testAddPolynomail();
-//        testStackByArray();
-//        testStackByLinked();
-//        testHanoi();
-        testMaze();
+
+//        testExpressionPrefix();
+//        testExpressionInfix();
+        testExpressionPostfix();
     }
 
     private static void testArray(){
@@ -167,5 +159,29 @@ public class Main {
     private static void testMaze(){
         Maze maze = new Maze();
         maze.maze();
+    }
+
+    private static void testQueen(){
+        EightQueen queen = new EightQueen();
+        queen.findQueen();
+    }
+
+    private static void testExpressionInfix(){
+        String expression ="2*3/(2-1)+3*(4-1)";
+//        String expression ="2*(1+2*(5+5*3))";
+        Expression.infix(expression);
+    }
+
+    private static void testExpressionPrefix(){
+        String expression ="2*3/(2-1)+3*(4-1)";
+
+        Expression.prefix(expression);
+    }
+
+
+    private static void testExpressionPostfix(){
+        String expression ="2*3/(2-1)+3*(4-1)";
+
+        Expression.postfix(expression);
     }
 }
