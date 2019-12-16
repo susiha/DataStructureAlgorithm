@@ -2,7 +2,6 @@ package com.susiha.concept;
 
 import com.susiha.Utils.BaseUtils;
 import com.susiha.datastructure.base.LinkedList;
-import com.susiha.datastructure.stack.Stack;
 import com.susiha.datastructure.stack.StackByArray;
 
 /**
@@ -30,9 +29,6 @@ public class Expression {
      * 比如3+5，5*6..
      */
     public static void infix(String expression) {
-//        String expression = "3+5*6+7*8+4*(1+2)";
-//        String expression = "3+5%6+7*8+4*(1+2*(3-2))";
-
         //运算符栈
         StackByArray<Character> operators = new StackByArray<>();
         //操作数栈
@@ -131,7 +127,6 @@ public class Expression {
                 //把计算结果再重新放入栈中
                 operands.push(operation(firstOperand,operators.pop(),lastOperand));
             }
-
             BaseUtils.println("操作数栈 :"+operands.toString());
             BaseUtils.println("运算符栈 :"+operators.toString());
         }
@@ -150,7 +145,6 @@ public class Expression {
      *
      */
     public static void prefix(String expression){
-//        String expression = "3+5%6+7*8+4*(1+2*(3-2))";
         LinkedList<String> result = infixToPrefix(expression);
         StringBuffer sb = new StringBuffer();
         for(int i = 0;i<result.getSize();i++){
@@ -178,6 +172,95 @@ public class Expression {
             BaseUtils.println("运算结果 :"+resultValue.toString());
         }
     }
+
+
+    /**
+     * 使用括号法 中序转前序
+     * 这种方法直观方便
+     * 1 就是根据执行优先级把中序表达式完全括起来
+     * 2 移动所有的运算符来取代其左边的左括号 ，并以最近的为原则
+     * 3 将所有的右括号去掉
+     * 如 2+3*5+4
+     * 用括号括起来之后就是
+     * 1 ((2+(3*5))+4)
+     * 2 用操作符替换掉它最左边的左括号
+     *  ++2*35))4)
+     * 3 去掉右括号之后得到的结果就是前序表达式
+     * ++2*354
+     *
+     */
+    private static void infixToPrefixUseBracket(){
+
+    }
+
+    /**
+     * 使用括号法 中序转后序
+     * 1 就是根据执行优先级把中序表达式完全括起来
+     * 2 移动所有的运算符来取代其右边的右括号 ，并以最近的为原则
+     * 3 将所有的左括号去掉
+     * 如2+3*5+4 步骤
+     * 1 ((2+(3*5))+4)
+     * 2 ((2(35*+4+
+     * 3 235*+4+
+     *
+     */
+    private static void infixToPostfixUseBracket(){
+
+    }
+
+
+    /**
+     * 使用括号法 前序转中序
+     * 1 按照运算符+操作数的顺序依次给加括号
+     * 2 把运算符就近替换右边的右括号
+     * 3 按照<操作数><运算符><操作数>补齐左括号对应的右括号
+     * 4 根据优先级去掉多余的括号
+     *
+     * 如*+23+34
+     * 1 (*(+2)3)(+3)4
+     * 2 ((2+3*(3+4
+     * 3 ((2+3)*(3+4))
+     * 4 (2+3)*(3+4)
+     *
+     *
+     *
+     * 再或者 ++2*345
+     * 1 (+(+2)(*3)4)5
+     * 2 ((2+(3*4+5
+     * 3 ((2+(3*4))+5)
+     * 4 2+3*4+5
+     *
+     */
+    private static void prefixToInfixUseBracket(){
+
+    }
+
+    /**
+     * 使用括号法 后序转中序
+     * 1 按照操作数+运算符的规则给加上括号
+     * 2 然后把运算符替换掉最近的左边的左括号
+     * 3 然后根据<操作数><运算符><操作数>的规则补齐右括号对应的左括号
+     * 4 按照优先级关系去掉多余的括号
+     *
+     * 如 235*+4+
+     * 1 2(3(5*)+)(4+)
+     * 2 2+3*5))+4)
+     * 3 ((2+(3*5))+4)
+     * 4 2+3*5+4
+     *
+     * 再或者 23+45+*
+     * 1 2(3+)(4(5+)*)
+     * 2 2+3)*4+5))
+     * 3 ((2+3)*(4+5))
+     * 4 (2+3)*(4+5)
+     */
+    private static  void postfixToInfixUseBracket(){
+
+    }
+
+
+
+
 
     /**
      * 后序表达式
@@ -217,7 +300,7 @@ public class Expression {
 
 
     /**
-     * 中序表达式转后续表达式
+     * 中序表达式转后序表达式
      *
      * @param expression
      * @return
